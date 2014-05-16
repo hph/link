@@ -7,7 +7,7 @@ $(function() {
       success: function(response) {
         var url = window.location.host + '/' + response.link.uid;
         $('#short-url').val(url).show().select();
-        if (navigator.platform == 'MacIntel') {
+        if (['MacIntel', 'iPhone', 'iPod'].indexOf(navigator.platform) > -1) {
           var key = 'Command';
         } else {
           var key = 'Control';
