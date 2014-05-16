@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>hph.is</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='description' content='Link - A simple URL shortener'>
+    <link rel='shortcut icon' href='/favicon.ico'>
+    <link href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel='stylesheet' href='/css/application.css'>
+    <!--[if lt IE 9]>
+    <script src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js'></script>
+    <script src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js'></script>
+    <![endif]-->
+  <body>
+    <div class='container'>
+      <div class='brand'>
+        <h1>Link</h1>
+        <span class='text-muted'>Shorten a link</span>
+      </div>
+      <div class='input-group'>
+        <input id='long-url' class='form-control' type='text' name='url' autofocus></input>
+        <span class='input-group-btn'>
+          <button id='submit' class='btn btn-success'>Submit</button>
+        </span>
+      </div>
+      <input id='short-url' class='form-control' type='text' style='display: none'></input>
+      <p id='info-text' class='text-muted'>
+    </div>
+    <script src='//code.jquery.com/jquery-1.11.0.min.js'></script>
+    <script src='/js/application.js'></script>
+  </body>
+</html>

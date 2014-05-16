@@ -1,0 +1,41 @@
+html, body {
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Open Sans' sans-serif;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100px;
+  max-width: 300px;
+  margin-top: -80px;
+  margin-left: -150px;
+}
+
+.brand {
+  padding-bottom: 15px;
+}
+
+.brand h1, .brand span {
+  display: inline;
+}
+
+.brand h1 {
+  font-size: 200%;
+}
+
+.brand span {
+  font-size: 150%;
+  float: right;
+}
+
+#short-url {
+  margin: 15px 0px;
+  text-align: center;
+}
+
+#info-text {
+  text-align: center;
+}
