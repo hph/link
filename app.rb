@@ -5,9 +5,14 @@ Bundler.require(:default)
 class Link < ActiveRecord::Base
   validates_presence_of :url
   validates_uniqueness_of :url, :uid
+  before_create :fix_url
   before_create :generate_uid
 
   private
+
+  def fix_url
+    self.url = "http://#{url}" if url[/^http(s)*:\/\//].nil?
+  end
 
   def generate_uid
     Enumerator.new do |y|
