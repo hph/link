@@ -8,3 +8,4 @@ gem 'pry'
 gem 'sinatra', require: 'sinatra/base'
 gem 'sinatra-contrib', require: 'sinatra/contrib'
 gem 'sinatra-activerecord', require: 'sinatra/activerecord'
+gem 'thin', require: false
