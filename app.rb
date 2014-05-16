@@ -32,7 +32,17 @@ class App < Sinatra::Base
   end
 
   get '/:uid' do
+    link = Link.find_by_uid(params[:uid])
+    not_found if link.nil?
     redirect Link.find_by!(uid: params[:uid]).url
+  end
+
+  not_found do
+    send_file 'public/404.html'
+  end
+
+  error do
+    send_file 'public/500.html'
   end
 
   after do
