@@ -1,5 +1,8 @@
 $(function() {
   function post() {
+    if ($('#long-url').val().length === 0) {
+      return alert('The text field is empty...');
+    }
     $.ajax({
       type: 'POST',
       url: '/new',
