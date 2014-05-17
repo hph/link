@@ -36,8 +36,8 @@ class App < Sinatra::Base
     json link: Link.find_or_create_by(url: params[:url])
   end
 
-  get '/:uid' do
-    link = Link.find_by_uid(params[:uid])
+  get %r{^/(\w{6})$} do
+    link = Link.find_by_uid(params[:captures].first)
     not_found if link.nil?
     redirect Link.find_by!(uid: params[:uid]).url
   end
