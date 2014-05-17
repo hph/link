@@ -11,7 +11,7 @@ class Link < ActiveRecord::Base
   private
 
   def fix_url
-    self.url = "http://#{url}" if url[/^http(s)*:\/\//].nil?
+    self.url = "http://#{url}" if url[%r{^http(s)*://}].nil?
   end
 
   def generate_uid
