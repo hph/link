@@ -59,7 +59,7 @@ class App < Sinatra::Base
 
   helpers do
     def html(view)
-      send_file "public/#{view.to_s}.html"
+      send_file File.join('public', "#{view.to_s}.html")
     end
   end
 end
