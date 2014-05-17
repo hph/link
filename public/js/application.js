@@ -4,7 +4,8 @@ $(function() {
   if (links === null) {
     links = [];
   } else {
-    $('#toggle-links').show();
+    $('#old-links-text').show();
+    $('#clear').show();
     _.each(links, function(link) {
       $('.old-links').prepend(_.template($('#link-template').html(), link));
     });
@@ -14,7 +15,8 @@ $(function() {
     $('.old-links').prepend(_.template($('#link-template').html(), link));
     links.push(link);
     localStorage.setItem('links', JSON.stringify(links));
-    $('#toggle-links').show();
+    $('#old-links-text').show();
+    $('#clear').show();
   }
 
   function post() {
@@ -50,15 +52,10 @@ $(function() {
     }
   });
 
-  $('#toggle-links').click(function() {
-    var button = $('#toggle-links');
-    var links = $('.old-links');
-    if (button.html() === 'Show old links') {
-      button.html('Hide old links');
-      links.show();
-    } else {
-      button.html('Show old links');
-      links.hide();
-    }
+  $('#clear').click(function() {
+    $('#old-links-text').hide();
+    $('#clear').hide();
+    $('.old-links').html('');
+    localStorage.setItem('links', null);
   });
 });

@@ -6,7 +6,7 @@ html, body {
 
 .container {
   position: absolute;
-  top: 50%;
+  top: 30%;
   left: 50%;
   height: 100px;
   max-width: 300px;
@@ -38,12 +38,6 @@ html, body {
 
 #info-text {
   text-align: center;
-}
-
-#toggle-links {
-  margin: 8px 0px;
-  min-width: 100px;
-  margin-left: 85px;
 }
 
 .old-links {
