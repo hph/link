@@ -29,7 +29,7 @@ class App < Sinatra::Base
   Tilt.register Tilt::ERBTemplate, 'html.erb'
 
   get '/' do
-    erb :index
+    html :index
   end
   
   post '/new' do
@@ -43,15 +43,21 @@ class App < Sinatra::Base
   end
 
   not_found do
-    send_file 'public/404.html'
+    html '404'
   end
 
   error do
-    send_file 'public/500.html'
+    html '500'
   end
 
   after do
     ActiveRecord::Base.connection.close
+  end
+
+  helpers do
+    def html(view)
+      send_file "public/#{view.to_s}.html"
+    end
   end
 end
 
