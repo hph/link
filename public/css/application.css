@@ -39,3 +39,20 @@ html, body {
 #info-text {
   text-align: center;
 }
+
+#toggle-links {
+  margin: 8px 0px;
+  min-width: 100px;
+  margin-left: 85px;
+}
+
+.old-links {
+  list-style-type: none;
+  padding: 0px;
+  display: table;
+}
+
+.old-links a {
+  float: left;
+  max-width: 180px;
+}

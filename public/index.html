@@ -28,9 +28,16 @@
         </span>
       </div>
       <input id='short-url' class='form-control' type='text' style='display: none'></input>
-      <p id='info-text' class='text-muted'>
+      <p id='info-text' class='text-muted'></p>
+      <button id='toggle-links' class='btn btn-sm btn-default' style='display: none'>Show old links</button>
+      <ul class='old-links' style='display: none'>
+      </ul>
     </div>
     <script src='//code.jquery.com/jquery-1.11.0.min.js'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js'></script>
     <script src='/js/application.js'></script>
+    <script id='link-template' type='text/template'>
+      <li><a href='{{ url }}'>{{ uid }}</a></li>
+    </script>
   </body>
 </html>
