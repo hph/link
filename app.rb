@@ -38,8 +38,11 @@ class App < Sinatra::Base
 
   get %r{^/(\w{6})$} do
     link = Link.find_by_uid(params[:captures].first)
-    not_found if link.nil?
-    redirect Link.find_by!(uid: params[:uid]).url
+    if link.nil?
+      not_found
+    else
+      redirect link.url
+    end
   end
 
   not_found do
