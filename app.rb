@@ -26,8 +26,6 @@ class Link < ActiveRecord::Base
 end
 
 class App < Sinatra::Base
-  Tilt.register Tilt::ERBTemplate, 'html.erb'
-
   get '/' do
     html :index
   end
