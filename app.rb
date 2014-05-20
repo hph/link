@@ -15,12 +15,9 @@ class Link < ActiveRecord::Base
   end
 
   def generate_uid
-    Enumerator.new do |y|
-      loop do
-        y << 6.times.map { [*'0'..'9', *'a'..'z', *'A'..'Z'].sample }.join
-      end
-    end.each do |uid|
-      self.uid = uid and break unless Link.exists?(uid: uid)
+    loop do
+      self.uid = 6.times.map { [*'0'..'9', *'a'..'z', *'A'..'Z'].sample }.join
+      break unless Link.exists?(uid: uid)
     end
   end
 end
@@ -36,24 +33,14 @@ class App < Sinatra::Base
 
   get %r{^/(\w{6})$} do
     link = Link.find_by_uid(params[:captures].first)
-    if link.nil?
-      not_found
-    else
-      redirect link.url
-    end
+    link.nil? ? not_found : redirect(link.url)
   end
 
-  not_found do
-    html '404'
-  end
+  not_found { html '404' }
 
-  error do
-    html '500'
-  end
+  error { html '500' }
 
-  after do
-    ActiveRecord::Base.connection.close
-  end
+  after { ActiveRecord::Base.connection.close }
 
   helpers do
     def html(view)
