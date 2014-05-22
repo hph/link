@@ -3,6 +3,7 @@ require 'bundler'
 Bundler.require(:default)
 
 class Link < ActiveRecord::Base
+  has_many :hits
   validates_presence_of :url
   validates_uniqueness_of :url, :uid
   before_create :fix_url
@@ -22,6 +23,11 @@ class Link < ActiveRecord::Base
   end
 end
 
+class Hit < ActiveRecord::Base
+  belongs_to :article
+  validates_presence_of :ip_address
+end
+
 class App < Sinatra::Base
   get '/' do
     html :index
@@ -33,7 +39,12 @@ class App < Sinatra::Base
 
   get %r{^/(\w{6})$} do
     link = Link.find_by_uid(params[:captures].first)
-    link.nil? ? not_found : redirect(link.url)
+    if link.nil?
+      not_found
+    else
+      link.hits.create(ip_address: request.ip)
+      redirect link.url
+    end
   end
 
   not_found { html '404' }
